@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Welcome To Multy Player"
-        android:textColor="@color/black"
         android:textSize="56sp"
         android:gravity="center">
 

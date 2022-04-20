@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Tic Tac Toe"
-        android:textColor="@color/black"
         >
 
     </TextView>
