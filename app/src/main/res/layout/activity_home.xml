@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="48sp"
+        android:fontFamily="@font/luckiest_guy"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/ll"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Single Player"
+            android:fontFamily="@font/luckiest_guy"
             >
 
         </Button>
@@ -42,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Mulyiplayer"
+            android:fontFamily="@font/luckiest_guy"
             >
 
         </Button>
@@ -52,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="Options"
             android:layout_gravity="center"
+            android:fontFamily="@font/luckiest_guy"
             >
 
         </Button>

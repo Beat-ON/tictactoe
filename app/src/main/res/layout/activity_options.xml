@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Options"
+        android:fontFamily="@font/luckiest_guy"
         android:textSize="56sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/options_ll"
@@ -31,6 +32,7 @@
             android:id="@+id/black_button"
             android:layout_width="wrap_content"
             android:text="Black"
+            android:fontFamily="@font/luckiest_guy"
             android:layout_height="wrap_content"
             >
 
@@ -39,6 +41,7 @@
             android:id="@+id/white_button"
             android:layout_width="wrap_content"
             android:text="White"
+            android:fontFamily="@font/luckiest_guy"
             android:layout_height="wrap_content"
             >
 
