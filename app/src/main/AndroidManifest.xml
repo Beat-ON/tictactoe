@@ -17,7 +17,7 @@
             android:name=".Options"
             android:exported="false" />
         <activity
-            android:name=".MultyPlayer"
+            android:name=".twoplayer.MultyPlayer"
             android:exported="false" />
         <activity
             android:name=".SinglePlayer"

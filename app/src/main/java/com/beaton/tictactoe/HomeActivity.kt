@@ -3,6 +3,7 @@ package com.beaton.tictactoe
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.beaton.tictactoe.twoplayer.MultyPlayer
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         mp.setOnClickListener{
-            val intent = Intent(this,MultyPlayer::class.java)
+            val intent = Intent(this, MultyPlayer::class.java)
             startActivity(intent)
         }
         options.setOnClickListener{
