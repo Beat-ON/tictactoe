@@ -102,7 +102,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click1++
             }else{
-                activity.text11.text = ""
+                activity.text11.setOnClickListener(null)
             }
         }
             activity.text12.setOnClickListener {
@@ -119,7 +119,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                     }
                     miss_click2++
                 }else{
-                    activity.text12.text = ""
+                    activity.text12.setOnClickListener(null)
                 }
             }
             activity.text13.setOnClickListener {
@@ -136,7 +136,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click3++
             }else{
-                    activity.text13.text = ""
+                    activity.text13.setOnClickListener(null)
                 }
             }
             activity.text21.setOnClickListener {
@@ -153,7 +153,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click4++
             }else{
-                    activity.text21.text = ""
+                    activity.text21.setOnClickListener(null)
                 }
             }
             activity.text22.setOnClickListener {
@@ -170,7 +170,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click5++
             }else{
-                    activity.text22.text = ""
+                    activity.text22.setOnClickListener(null)
                 }
             }
             activity.text23.setOnClickListener {
@@ -187,7 +187,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click6++
             }else{
-                    activity.text23.text = ""
+                    activity.text23.setOnClickListener(null)
                 }
             }
             activity.text31.setOnClickListener {
@@ -204,7 +204,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click7++
             }else{
-                    activity.text31.text = ""
+                    activity.text31.setOnClickListener(null)
                 }
             }
             activity.text32.setOnClickListener {
@@ -221,7 +221,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click8++
             }else{
-                    activity.text32.text = ""
+                    activity.text32.setOnClickListener(null)
                 }
             }
             activity.text33.setOnClickListener {
@@ -238,7 +238,7 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
                 }
                 miss_click9++
             }else{
-                    activity.text33.text = ""
+                    activity.text33.setOnClickListener(null)
                 }
             }
     }
