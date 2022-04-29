@@ -20,7 +20,7 @@
             android:name=".twoplayer.MultyPlayer"
             android:exported="false" />
         <activity
-            android:name=".SinglePlayer"
+            android:name=".singleplayer.SinglePlayer"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

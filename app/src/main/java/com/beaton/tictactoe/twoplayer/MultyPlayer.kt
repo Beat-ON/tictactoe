@@ -8,6 +8,7 @@ class MultyPlayer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_multy_player)
+        supportActionBar?.hide()
         val load = LoadMultiPlayer(this)
         load.start()
     }
