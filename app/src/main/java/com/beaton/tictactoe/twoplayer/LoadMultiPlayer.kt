@@ -5,6 +5,8 @@ import android.media.MediaPlayer
 import android.util.Log
 import android.widget.TextView
 import com.beaton.tictactoe.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_multy_player.drawutti
 import kotlinx.android.synthetic.main.activity_multy_player.outti
 import kotlinx.android.synthetic.main.activity_multy_player.text11
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_multy_player.text31
 import kotlinx.android.synthetic.main.activity_multy_player.text32
 import kotlinx.android.synthetic.main.activity_multy_player.text33
 import kotlinx.android.synthetic.main.activity_multy_player.xutti
+import kotlinx.android.synthetic.main.activity_single_player.*
 
 class LoadMultiPlayer(private var activity: MultyPlayer) {
     private var click = 1
@@ -31,6 +34,15 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
         fillGamePanel()
         setOnClickArea()
     }
+    private fun restart_button(){
+        activity.restart_btn.setOnClickListener(){
+            gamePanel.clear()
+            winners=""
+            fillGamePanel()
+            click=1
+            isShowDialog = false
+        }
+    }
 
     private fun check() {
         checkWinner()
@@ -44,28 +56,49 @@ class LoadMultiPlayer(private var activity: MultyPlayer) {
         }
     }
     private fun showDialog(winnerin:String){
-        var strr = winnerin
-        strr = if(strr == "draw"){
-            "Draw !!"
+        var str = winnerin
+        str = if(str == "draw"){
+            "DRAW !!!"
         }else {
-            "$strr Victory!"
+            "$str Victory!!!"
         }
         isShowDialog = true
-        val dialogSound = MediaPlayer.create(activity, R.raw.open)
-        dialogSound.start()
-        val dialog = AlertDialog.Builder(activity)
-            .setIcon(android.R.drawable.btn_star_big_on)
-            .setTitle("Result")
-            .setMessage(strr)
-            .setPositiveButton("Reset", null)
+
+        val winSound = MediaPlayer.create(activity,R.raw.open)
+        winSound.start()
+
+        val dialog = MaterialAlertDialogBuilder(activity)
+            .setTitle("Winner")
+            .setMessage(str)
+            .setNeutralButton("Exit",null)
+            .setNegativeButton("Close"){dialog, which ->
+                showSnackBar("Closed")
+            }
+            .setPositiveButton("Restart",null)
             .show()
         val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val button1 = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
+        val button2 = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+
+        button1.setOnClickListener{
+            activity.finish()
+            dialog.dismiss()
+        }
+
+        button2.setOnClickListener{
+            dialog.dismiss()
+        }
 
         button.setOnClickListener {
             dialog.dismiss()
             isShowDialog = false
             restart()
         }
+        activity.xutti.text = "$xwinner"
+        activity.outti.text = "$owinner"
+    }
+    private fun showSnackBar(msg:String){
+        Snackbar.make(activity.single_player_layout,msg, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun checkWinner() {
