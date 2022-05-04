@@ -4,8 +4,11 @@ import android.app.AlertDialog
 import android.media.MediaPlayer
 import android.os.Handler
 import android.widget.TextView
+import com.beaton.tictactoe.HomeActivity
 import com.beaton.tictactoe.R
 import com.beaton.tictactoe.twoplayer.Winner
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_single_player.*
 
 class LoadSinglePlayer(private val activitySingle: SinglePlayer) {
@@ -22,6 +25,7 @@ class LoadSinglePlayer(private val activitySingle: SinglePlayer) {
     fun start(){
         fillGamePanel()
         setOnClickArea()
+        restart_button()
     }
 
     private fun restart(){
@@ -33,6 +37,20 @@ class LoadSinglePlayer(private val activitySingle: SinglePlayer) {
         isPlayerSet = false
         setTextOnTextViews()
     }
+    private fun restart_button(){
+        activitySingle.restart_btn.setOnClickListener(){
+            set = mutableSetOf(1,2,3,4,5,6,7,8,9)
+            gamePanel.clear()
+            winner=""
+            fillGamePanel()
+            click=1
+            isPlayerSet = false
+            setTextOnTextViews()
+            isShowDialog = false
+        }
+    }
+
+
     private fun setTextOnTextViews(){
         activitySingle.text11.text = ""
         activitySingle.text12.text = ""
@@ -160,22 +178,36 @@ class LoadSinglePlayer(private val activitySingle: SinglePlayer) {
     private fun showDialog(winnerin:String){
         var str = winnerin
         str = if(str == "draw"){
-            "Draw !!"
+            "DRAW !!!"
         }else {
-            "$str Victory!"
+            "$str Victory!!!"
         }
         isShowDialog = true
 
         val winSound = MediaPlayer.create(activitySingle,R.raw.open)
         winSound.start()
 
-        val dialog = AlertDialog.Builder(activitySingle)
-            .setIcon(R.drawable.ic_launcher_background)
-            .setTitle("Result")
+        val dialog = MaterialAlertDialogBuilder(activitySingle)
+            .setTitle("Winner")
             .setMessage(str)
-            .setPositiveButton("Reset", null)
+            .setNeutralButton("Exit",null)
+            .setNegativeButton("Close"){dialog, which ->
+                showSnackBar("Closed")
+            }
+            .setPositiveButton("Restart",null)
             .show()
         val button = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val button1 = dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
+        val button2 = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+
+        button1.setOnClickListener{
+            activitySingle.finish()
+            dialog.dismiss()
+        }
+
+        button2.setOnClickListener{
+            dialog.dismiss()
+        }
 
         button.setOnClickListener {
             dialog.dismiss()
@@ -184,6 +216,9 @@ class LoadSinglePlayer(private val activitySingle: SinglePlayer) {
         }
         activitySingle.xutti.text = "$xWinCount"
         activitySingle.outti.text = "$oWinCount"
+    }
+    private fun showSnackBar(msg:String){
+        Snackbar.make(activitySingle.single_player_layout,msg,Snackbar.LENGTH_SHORT).show()
     }
 
     private fun checkWinner(){
